@@ -1,14 +1,30 @@
-// Write your code below:
-// Add sub-heading inside the first div
-const mainHeading = document.getElementById("main-heading");
-const subHeading = document.createElement("h3");
-subHeading.textContent = "Buy high quality organic fruits online";
-subHeading.style.fontStyle = "italic";
-mainHeading.after(subHeading);
+// Add the Edit Button:
+const fruitLi = document.querySelectorAll(".fruit");
+fruitLi.forEach((item) => {
+  const editButton = document.createElement("button"); // Create a new edit button for each li element
+  editButton.className = "edit-btn";
+  editButton.innerText = "Edit";
+  item.appendChild(editButton);
+});
 
-// Add paragraph tag showing total fruits inside the second div
-const basketHeading = document.getElementById("basket-heading");
-const totalFruits = document.createElement("p");
-totalFruits.textContent = "Total fruits: 4";
-totalFruits.id = "fruits-total";
-basketHeading.before(totalFruits);
+// Implement the code as in video but with one extra 'Edit' button in 'li'
+const form = document.querySelector("form");
+const fruits = document.querySelector(".fruits");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const fruitToAdd = document.getElementById("fruit-to-add");
+  const newLi = document.createElement("li");
+  newLi.innerHTML =
+    fruitToAdd.value +
+    '<button class="delete-btn">x</button>' +
+    '<button class="edit-btn">Edit</button>';
+  fruits.appendChild(newLi);
+});
+
+fruits.addEventListener("click", function (event) {
+  if (event.target.classList.contains("delete-btn")) {
+    const fruitToDelete = event.target.parentElement;
+    fruits.removeChild(fruitToDelete);
+  }
+});

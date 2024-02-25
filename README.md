@@ -1,11 +1,15 @@
-## task-4
+## task-6
 
-- Creating Elements & DOM Relations
+- Add & Delete Fruits
 
-1. Inside the first Div, after the main heading add a sub-heading (h3 tag) "Buy high quality organic fruits online".
+1. In each "li" after the delete button add an edit button with class 'edit-btn'. Once you do this the output on the screen will look like this:
 
-2. Make the sub-heading text italic.
+   ![alt text](download.png)
 
-3. Inside the second Div, before the unordered list add a paragraph tag showing "Total fruits: 4".
+2. Now, implement the add and delete functionality just the way it is done in the video. There is only one difference that now the new 'li' element that you will create will have two buttons (delete and edit) instead of one button.
 
-4. On this paragraph tag set an id of "fruits-total".
+Note:
+
+You have to just add the edit button. You do not have to implement the edit functionality.
+Do not touch the html file.
+To listen for form submission event use addEventListener.
