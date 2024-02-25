@@ -1,30 +1,58 @@
-// Add the Edit Button:
-const fruitLi = document.querySelectorAll(".fruit");
-fruitLi.forEach((item) => {
-  const editButton = document.createElement("button"); // Create a new edit button for each li element
-  editButton.className = "edit-btn";
-  editButton.innerText = "Edit";
-  item.appendChild(editButton);
-});
-
-// Implement the code as in video but with one extra 'Edit' button in 'li'
+// Add input element inside form, before button, to take fruit description
 const form = document.querySelector("form");
-const fruits = document.querySelector(".fruits");
+const fruitDescription = document.createElement("input");
+fruitDescription.type = "text";
+fruitDescription.id = "description";
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const fruitToAdd = document.getElementById("fruit-to-add");
-  const newLi = document.createElement("li");
-  newLi.innerHTML =
-    fruitToAdd.value +
-    '<button class="delete-btn">x</button>' +
-    '<button class="edit-btn">Edit</button>';
-  fruits.appendChild(newLi);
-});
+// Get a reference to the button element
+const button = document.querySelector("button");
 
-fruits.addEventListener("click", function (event) {
-  if (event.target.classList.contains("delete-btn")) {
-    const fruitToDelete = event.target.parentElement;
-    fruits.removeChild(fruitToDelete);
+// Insert the new input element before the button
+form.insertBefore(fruitDescription, button);
+
+// Show the fruit description in italics on the next line
+const fruits = document.querySelectorAll(".fruit");
+
+// Different descriptions for each fruit
+const descriptions = [
+  "Sweet and yellow, often eaten when ripe.",
+  "Crisp and juicy, comes in various colors.",
+  "Citrusy and refreshing, good source of vitamin C.",
+  "Small and fuzzy, with green flesh inside.",
+];
+
+for (let i = 0; i < fruits.length; i++) {
+  const fruitDes = document.createElement("p");
+  fruitDes.innerText = descriptions[i];
+  const delBtn = fruits[i].querySelector(".delete-btn");
+  fruits[i].insertBefore(fruitDes, delBtn);
+}
+
+// Create a filter that shows only those fruits whose either name or description or both matches the entered text
+const filter = document.getElementById("filter");
+
+filter.addEventListener("keyup", function (event) {
+  const textEntered = event.target.value.toLowerCase();
+  const fruitItems = document.getElementsByClassName("fruit");
+
+  for (let i = 0; i < fruitItems.length; i++) {
+    const currentFruit = fruitItems[i].firstChild.textContent.toLowerCase();
+    // if(currentFruit.indexOf(textEntered) === -1) {
+    //   fruitItems[i].style.display = 'none';
+    // } else {
+    //   fruitItems[i].style.display = 'flex';
+    // }
+    const currentFruitDes = fruitItems[i]
+      .querySelector("p")
+      .textContent.toLowerCase();
+
+    if (
+      currentFruit.includes(textEntered) ||
+      currentFruitDes.includes(textEntered)
+    ) {
+      fruitItems[i].style.display = "flex";
+    } else {
+      fruitItems[i].style.display = "none";
+    }
   }
 });

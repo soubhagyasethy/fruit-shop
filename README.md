@@ -1,15 +1,13 @@
-## task-6
+## task-7
 
-- Add & Delete Fruits
+- Filter Functionality
 
-1. In each "li" after the delete button add an edit button with class 'edit-btn'. Once you do this the output on the screen will look like this:
+Deliverables:
 
-   ![alt text](download.png)
+1. Use DOM Manipulation to add another input element inside form, before the button. This input element will take the description of the fruit.
 
-2. Now, implement the add and delete functionality just the way it is done in the video. There is only one difference that now the new 'li' element that you will create will have two buttons (delete and edit) instead of one button.
+2. Use DOM Manipulation to show the fruit description (in italics) on screen alongwith the fruit name. This description should be shown in the next line (HINT: To show description on next line you can make use of the paragraph tag).
 
-Note:
+3. Now, create a filter that shows only those fruits whose either name or description or both matches the entered text.
 
-You have to just add the edit button. You do not have to implement the edit functionality.
-Do not touch the html file.
-To listen for form submission event use addEventListener.
+Note: The input element that you will create using DOM manipulation to collect the description of fruit, must be given an id “description”.
